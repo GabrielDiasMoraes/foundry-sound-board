@@ -9,9 +9,9 @@ export const ytReady = () => (api ??= new Promise((res) => {
   document.head.append(s);
 }));
 
-// Visible players only (YouTube terms forbid hiding the player): they live inside the widget, 200x200 (the minimum YouTube allows).
+// Visible players only (YouTube terms forbid hiding the player): they live inside the widget, full widget width (auto) x 200 (the minimum height YouTube allows).
 export const box = () => document.getElementById('fsb-yt');
-export const SIZE = { width: 200, height: 200 };
+export const SIZE = { width: '100%', height: 200 };
 
 export const vidOf = (u = '') => /(?:[?&]v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/.exec(u)?.[1];
 export const listOf = (u = '') => /[?&]list=([\w-]+)/.exec(u)?.[1];
