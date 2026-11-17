@@ -16,10 +16,10 @@ Hooks.once('init', () => {
   game.settings.register(MOD, 'widget', { scope: 'client', config: false, type: Object, default: { x: null, y: null, open: false } });
 });
 
-Hooks.once('ready', () => {
+Hooks.once('ready', async () => {
   const open = () => { mgr ??= new Manager(); mgr.render({ force: true }); };
   game.modules.get(MOD).api = { open };
   initEffects();
-  initWidget(open);
+  await initWidget(open);
   startEngine();
 });

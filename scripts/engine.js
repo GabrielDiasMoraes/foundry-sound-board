@@ -1,6 +1,6 @@
 // Music channels. Authoritative state lives in the world setting `state`: only the GM can write it,
 // and Foundry pushes it to every client (onChange), including late joiners/reloads (read at ready).
-import { ytReady, box, SIZE } from './yt.js';
+import { ytReady, box, boxWin, SIZE, pv } from './yt.js';
 
 export const MOD = 'foundry-sound-board';
 export const getState = () => game.settings.get(MOD, 'state');
@@ -50,8 +50,8 @@ const advance = (id, vid) => {
 function create(id) {
   const el = box().appendChild(document.createElement('div'));
   const p = { vid: null, ready: false, want: null };
-  p.yt = new YT.Player(el, {
-    ...SIZE, playerVars: { playsinline: 1, disablekb: 1 },
+  p.yt = new (boxWin().YT.Player)(el, {
+    ...SIZE, playerVars: pv({ playsinline: 1, disablekb: 1 }),
     events: {
       onReady: () => { p.ready = true; sync(id); },
       onStateChange: (e) => { if (e.data === 0) advance(id, p.vid); onChange(); },
@@ -83,7 +83,8 @@ function sync(id) {
 
 export async function reconcile() {
   const st = getState();
-  await ytReady();
+  if (!box()) return; // the widget window is not rendered yet
+  await ytReady(boxWin());
   const live = new Set(st.channels.filter((c) => c.queue[c.index] && c.playing).map((c) => c.id));
   for (const [id, p] of players) if (!live.has(id)) { p.yt.destroy(); players.delete(id); }
   for (const ch of st.channels) {
@@ -93,6 +94,13 @@ export async function reconcile() {
     sync(ch.id);
   }
   onChange();
+}
+
+// the widget moved to or from a PopOut! window: its iframes were reloaded and lost their link to this script, so rebuild them there
+export async function rebind() {
+  for (const p of players.values()) { try { p.yt.destroy(); } catch { /* iframe already gone */ } }
+  players.clear();
+  await reconcile();
 }
 
 export const applyVolumes = () => { for (const p of players.values()) if (p.ready && p.want) p.yt.setVolume(mix(p.want.volume)); };

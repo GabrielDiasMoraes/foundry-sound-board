@@ -1,17 +1,25 @@
-// YouTube IFrame API helpers (official embed, hidden offscreen players).
-let api;
-export const ytReady = () => (api ??= new Promise((res) => {
-  if (window.YT?.Player) return res();
-  const prev = window.onYouTubeIframeAPIReady;
-  window.onYouTubeIframeAPIReady = () => { prev?.(); res(); };
-  const s = document.createElement('script');
-  s.src = 'https://www.youtube.com/iframe_api';
-  document.head.append(s);
-}));
+// YouTube IFrame API helpers (official embed; the player is always visible inside the widget window).
+const apis = new WeakMap(); // window -> promise: a pop-out window needs its own copy of the API, loaded in that window
+export const ytReady = (win = window) => {
+  if (win.YT?.Player) return Promise.resolve();
+  if (!apis.has(win)) apis.set(win, new Promise((res) => {
+    const prev = win.onYouTubeIframeAPIReady;
+    win.onYouTubeIframeAPIReady = () => { prev?.(); res(); };
+    const s = win.document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    win.document.head.append(s);
+  }));
+  return apis.get(win);
+};
 
-// Visible players only (YouTube terms forbid hiding the player): they live inside the widget, full widget width (auto) x 200 (the minimum height YouTube allows).
-export const box = () => document.getElementById('fsb-yt');
+// Visible players only (YouTube terms forbid hiding the player): they live inside the widget window, full width (auto) x 200 (the minimum height YouTube allows).
+let boxEl;
+export const setBox = (e) => { boxEl = e; };
+export const box = () => boxEl;
+export const boxWin = () => boxEl?.ownerDocument.defaultView ?? window; // main window, or the PopOut! window
 export const SIZE = { width: '100%', height: 200 };
+// explicit origin: a pop-out window is about:blank, where the API would otherwise send "null" and never get events back
+export const pv = (o = {}) => ({ origin: window.location.origin, ...o });
 
 export const vidOf = (u = '') => /(?:[?&]v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/.exec(u)?.[1];
 export const listOf = (u = '') => /[?&]list=([\w-]+)/.exec(u)?.[1];

@@ -4,7 +4,8 @@ GM-controlled, synced audio for every player: YouTube music channels, effects, s
 
 Install: copy this folder to `Data/modules/foundry-sound-board` and enable it in the world.
 
-- **Widget (everyone):** title, `m:ss / total`, general volume; the chevron shows the board buttons the GM allowed. Drag it by the grip.
+- **Player window (everyone):** the YouTube player, title, `m:ss / total`, general volume; the chevron shows the board buttons the GM allowed. It is a normal Foundry window (drag it by the title bar) that cannot be closed or minimised.
+- **Pop-out:** with the [PopOut!](https://foundryvtt.com/packages/popout) module the player window can be popped into its own browser window (button in its title bar); the players are rebuilt there and stay in sync.
 - **Manager (GM, sliders icon):** channels with queues (play/pause/skip, loop, shuffle, volume, main channel star), saved playlists, boards.
 - **Shuffle:** reorders the queue (current track keeps playing) and reshuffles every round, looping.
 - **Search:** filters tracks across all channels / playlists; every track has an ✕ to remove it. Chevrons fold channels and playlists.

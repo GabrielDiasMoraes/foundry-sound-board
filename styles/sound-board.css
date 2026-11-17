@@ -1,13 +1,14 @@
+#fsb-yt { background: #000; }
 #fsb-yt { display: flex; flex-direction: column; gap: 2px; } #fsb-yt:empty { display: none; }
 #fsb-yt iframe { display: block; width: 100%; height: 200px; max-width: 100%; }
-#fsb-widget { position: fixed; z-index: 60; min-width: 360px; max-width: 420px; background: #000c; color: #eee; border-radius: 8px; font-size: 12px; backdrop-filter: blur(4px); }
 #fsb-widget .bar { display: flex; align-items: center; gap: 6px; padding: 4px 8px; }
-#fsb-widget .grip { cursor: grab; opacity: .6; }
 #fsb-widget .info { flex: 1; min-width: 0; }
 #fsb-widget .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
 #fsb-widget .time { opacity: .7; font-variant-numeric: tabular-nums; }
 #fsb-widget input[type=range] { width: 70px; margin: 0; }
 #fsb-widget button { width: auto; line-height: 1.4; padding: 0 6px; }
+#fsb-widget .window-content { padding: 0; font-size: 12px; gap: 0; }
+#fsb-widget [data-action="close"] { display: none; }
 #fsb-widget .panel, .fsb-manager .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; padding: 6px 8px 8px; }
 .fsb .sb { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; height: 56px; width: 100%; background: var(--c, #444); color: #fff; border: 0; border-radius: 6px; padding: 2px; }
 .fsb .sb i { font-size: 18px; } .fsb .sb img { width: 24px; height: 24px; object-fit: contain; }
