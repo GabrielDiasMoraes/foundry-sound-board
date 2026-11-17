@@ -11,7 +11,7 @@ Install: copy this folder to `Data/modules/foundry-sound-board` and enable it in
 - **Volume:** effective = channel x general, so the general slider scales every channel proportionally.
 - Saved playlists, channels and boards live in world settings, so any browser/GM device of that world sees them.
 
-Audio plays through hidden official YouTube IFrame players: every client needs internet and one click per session ("Enable audio").
+Music plays through the official YouTube player, which stays visible inside the widget while a channel is playing (YouTube's terms do not allow hiding it, so there is no option to hide it). Every client needs internet and one click per session ("Enable audio"). Paused channels show no player.
 
 <p align="center"><img src="docs/screenshots/1-widget.png" alt="Player widget"></p>
 <p align="center"><img src="docs/screenshots/2-widget-board.png" alt="Player widget with board buttons"></p>

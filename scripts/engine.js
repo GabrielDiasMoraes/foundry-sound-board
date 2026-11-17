@@ -1,6 +1,6 @@
 // Music channels. Authoritative state lives in the world setting `state`: only the GM can write it,
 // and Foundry pushes it to every client (onChange), including late joiners/reloads (read at ready).
-import { ytReady, box } from './yt.js';
+import { ytReady, box, SIZE } from './yt.js';
 
 export const MOD = 'foundry-sound-board';
 export const getState = () => game.settings.get(MOD, 'state');
@@ -51,7 +51,7 @@ function create(id) {
   const el = box().appendChild(document.createElement('div'));
   const p = { vid: null, ready: false, want: null };
   p.yt = new YT.Player(el, {
-    width: 200, height: 113, playerVars: { controls: 0, playsinline: 1, disablekb: 1 },
+    ...SIZE, playerVars: { playsinline: 1, disablekb: 1 },
     events: {
       onReady: () => { p.ready = true; sync(id); },
       onStateChange: (e) => { if (e.data === 0) advance(id, p.vid); onChange(); },
@@ -84,7 +84,7 @@ function sync(id) {
 export async function reconcile() {
   const st = getState();
   await ytReady();
-  const live = new Set(st.channels.filter((c) => c.queue[c.index]).map((c) => c.id));
+  const live = new Set(st.channels.filter((c) => c.queue[c.index] && c.playing).map((c) => c.id));
   for (const [id, p] of players) if (!live.has(id)) { p.yt.destroy(); players.delete(id); }
   for (const ch of st.channels) {
     if (!live.has(ch.id)) continue;

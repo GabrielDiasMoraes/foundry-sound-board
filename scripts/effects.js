@@ -1,6 +1,6 @@
 // One-shot effects: ephemeral "channels" at 100%, scaled only by the general volume, removed when they end.
 import { MOD, mix } from './engine.js';
-import { ytReady, box, vidOf, isYT } from './yt.js';
+import { ytReady, box, vidOf, isYT, SIZE } from './yt.js';
 
 const live = new Set(); // {btn, stop, setVol}
 const channel = `module.${MOD}`;
@@ -19,8 +19,8 @@ async function start(btn) {
     await ytReady();
     const el = box().appendChild(document.createElement('div'));
     const y = new YT.Player(el, {
-      width: 200, height: 113, videoId: vidOf(btn.src),
-      playerVars: { controls: 0, start, ...(end ? { end } : {}) },
+      ...SIZE, videoId: vidOf(btn.src),
+      playerVars: { start, ...(end ? { end } : {}) },
       events: {
         onReady: (e) => { entry.setVol(); e.target.playVideo(); },
         onStateChange: (e) => { if (e.data !== 0) return; if (btn.loop) { y.seekTo(start); y.playVideo(); } else entry.stop(); },

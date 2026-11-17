@@ -9,9 +9,9 @@ export const ytReady = () => (api ??= new Promise((res) => {
   document.head.append(s);
 }));
 
-// Offscreen but not display:none (YouTube throttles hidden players); keeps the 200x113 minimum.
-export const box = () => document.getElementById('fsb-yt')
-  || document.body.appendChild(Object.assign(document.createElement('div'), { id: 'fsb-yt' }));
+// Visible players only (YouTube terms forbid hiding the player): they live inside the widget, 356x200 (>= the 200x200 minimum).
+export const box = () => document.getElementById('fsb-yt');
+export const SIZE = { width: 356, height: 200 };
 
 export const vidOf = (u = '') => /(?:[?&]v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/.exec(u)?.[1];
 export const listOf = (u = '') => /[?&]list=([\w-]+)/.exec(u)?.[1];
@@ -24,18 +24,20 @@ export const title = (vid) => fetch(`https://www.youtube.com/oembed?url=https://
 export async function expandList(list) {
   await ytReady();
   return new Promise((res, rej) => {
-    const el = box().appendChild(document.createElement('div'));
+    // metadata lookup only: this player never plays or outputs sound, so it stays off screen
+    const tmp = document.body.appendChild(Object.assign(document.createElement('div'), { style: 'position:fixed;left:-10000px;top:0' }));
+    const el = tmp.appendChild(document.createElement('div'));
     const y = new YT.Player(el, {
-      width: 200, height: 113, playerVars: { listType: 'playlist', list },
+      width: 200, height: 200, playerVars: { listType: 'playlist', list },
       events: {
         onReady: () => {
           let n = 0;
           const iv = setInterval(() => {
             const ids = y.getPlaylist?.();
-            if (ids?.length || ++n > 25) { clearInterval(iv); y.destroy(); ids?.length ? res(ids) : rej(new Error('empty playlist')); }
+            if (ids?.length || ++n > 25) { clearInterval(iv); y.destroy(); tmp.remove(); ids?.length ? res(ids) : rej(new Error('empty playlist')); }
           }, 300);
         },
-        onError: () => { y.destroy(); rej(new Error('playlist error')); },
+        onError: () => { y.destroy(); tmp.remove(); rej(new Error('playlist error')); },
       },
     });
   });

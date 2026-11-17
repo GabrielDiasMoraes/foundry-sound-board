@@ -16,7 +16,7 @@ export function render() {
   const btns = allButtons().filter((b) => canPlay(b));
   const blocked = !navigator.userActivation?.hasBeenActive && getState().channels.some((c) => c.playing);
   el.classList.toggle('open', cfg.open);
-  el.innerHTML = `
+  el.querySelector('.ui').innerHTML = `
     <div class="bar">
       <i class="fa-solid fa-grip-vertical grip" title="${t('Drag')}"></i>
       <div class="info"><div class="title">${esc(ch?.queue[ch.index]?.title ?? t('Idle'))}</div><div class="time"></div></div>
@@ -40,6 +40,7 @@ function tick() {
 export function initWidget(open) {
   openManager = open;
   el = document.body.appendChild(Object.assign(document.createElement('div'), { id: 'fsb-widget', className: 'fsb' }));
+  el.innerHTML = '<div class="ui"></div><div id="fsb-yt"></div>'; // #fsb-yt holds the visible YouTube players
   const cfg = game.settings.get(MOD, 'widget');
   const place = (x, y) => { el.style.left = `${Math.max(0, Math.min(x, innerWidth - 120))}px`; el.style.top = `${Math.max(0, Math.min(y, innerHeight - 40))}px`; };
   place(cfg.x ?? innerWidth - 560, cfg.y ?? 8);

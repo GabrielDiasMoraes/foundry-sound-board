@@ -1,5 +1,6 @@
-#fsb-yt { position: fixed; left: -10000px; top: 0; width: 200px; height: 113px; pointer-events: none; }
-#fsb-widget { position: fixed; z-index: 60; min-width: 300px; max-width: 420px; background: #000c; color: #eee; border-radius: 8px; font-size: 12px; backdrop-filter: blur(4px); }
+#fsb-yt { display: flex; flex-direction: column; gap: 2px; } #fsb-yt:empty { display: none; }
+#fsb-yt iframe { display: block; width: 356px; height: 200px; max-width: 100%; }
+#fsb-widget { position: fixed; z-index: 60; min-width: 360px; max-width: 420px; background: #000c; color: #eee; border-radius: 8px; font-size: 12px; backdrop-filter: blur(4px); }
 #fsb-widget .bar { display: flex; align-items: center; gap: 6px; padding: 4px 8px; }
 #fsb-widget .grip { cursor: grab; opacity: .6; }
 #fsb-widget .info { flex: 1; min-width: 0; }
