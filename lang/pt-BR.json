@@ -1,0 +1,17 @@
+{
+  "FSB.Title": "Sound Board", "FSB.channels": "Canais", "FSB.playlists": "Playlists", "FSB.board": "Painel",
+  "FSB.Drag": "Arrastar", "FSB.Idle": "Nada tocando", "FSB.EnableAudio": "Ativar áudio", "FSB.General": "Volume geral",
+  "FSB.Manager": "Gerenciador de som", "FSB.Main": "Canal principal (visto pelos jogadores)", "FSB.Loop": "Repetir", "FSB.Volume": "Volume",
+  "FSB.Rename": "Renomear", "FSB.Delete": "Excluir", "FSB.Empty": "Fila vazia", "FSB.LinkHint": "Link de vídeo ou playlist do YouTube",
+  "FSB.Add": "Adicionar", "FSB.SaveQueue": "Salvar fila como playlist", "FSB.Clear": "Limpar fila", "FSB.AddChannel": "Adicionar canal",
+  "FSB.Name": "Nome", "FSB.BadLink": "Não foi possível adicionar o link", "FSB.Target": "Canal de destino", "FSB.Load": "Substituir fila",
+  "FSB.Append": "Acrescentar", "FSB.NoPlaylists": "Nenhuma playlist salva.", "FSB.AddBoard": "Adicionar painel", "FSB.StopAll": "Parar todos os efeitos",
+  "FSB.Button": "Botão do painel", "FSB.Label": "Rótulo", "FSB.Icon": "Ícone Font Awesome", "FSB.Image": "Imagem personalizada (substitui o ícone)",
+  "FSB.Color": "Cor", "FSB.Sound": "Som (arquivo ou link do YouTube)", "FSB.Start": "Início (s)", "FSB.End": "Fim (s)",
+  "FSB.Hotkey": "Atalho", "FSB.HotkeyHint": "Clique e pressione uma tecla (Backspace limpa)", "FSB.Players": "Quem pode tocar", "FSB.AllPlayers": "Todos os jogadores",
+  "FSB.NeedSound": "Escolha um arquivo de som ou cole um link do YouTube.",
+  "FSB.Search": "Buscar músicas...",
+  "FSB.Shuffle": "Aleatório (embaralha a cada rodada, em loop)",
+  "FSB.Fold": "Recolher / expandir",
+  "FSB.Remove": "Remover"
+}

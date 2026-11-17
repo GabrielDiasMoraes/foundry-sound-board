@@ -1,0 +1,26 @@
+#fsb-yt { position: fixed; left: -10000px; top: 0; width: 200px; height: 113px; pointer-events: none; }
+#fsb-widget { position: fixed; z-index: 60; min-width: 300px; max-width: 420px; background: #000c; color: #eee; border-radius: 8px; font-size: 12px; backdrop-filter: blur(4px); }
+#fsb-widget .bar { display: flex; align-items: center; gap: 6px; padding: 4px 8px; }
+#fsb-widget .grip { cursor: grab; opacity: .6; }
+#fsb-widget .info { flex: 1; min-width: 0; }
+#fsb-widget .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+#fsb-widget .time { opacity: .7; font-variant-numeric: tabular-nums; }
+#fsb-widget input[type=range] { width: 70px; margin: 0; }
+#fsb-widget button { width: auto; line-height: 1.4; padding: 0 6px; }
+#fsb-widget .panel, .fsb-manager .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; padding: 6px 8px 8px; }
+.fsb .sb { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; height: 56px; width: 100%; background: var(--c, #444); color: #fff; border: 0; border-radius: 6px; padding: 2px; }
+.fsb .sb i { font-size: 18px; } .fsb .sb img { width: 24px; height: 24px; object-fit: contain; }
+.fsb .sb span { font-size: 10px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fsb-manager .window-content { display: block; overflow: auto; }
+.fsb-manager .tabs { display: flex; gap: 12px; border-bottom: 1px solid #8884; margin-bottom: 8px; }
+.fsb-manager .tabs a.on, .fsb-manager a.on { font-weight: 700; color: var(--color-warm-2, #f90); }
+.fsb-manager .card { border: 1px solid #8884; border-radius: 6px; padding: 6px; margin-bottom: 8px; }
+.fsb-manager .row { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+.fsb-manager .row b { flex: 1; } .fsb-manager .row input[type=range] { flex: 0 0 90px; } .fsb-manager .row button { width: auto; }
+.fsb-manager ol { margin: 4px 0; padding-left: 22px; } .fsb-manager li { display: flex; justify-content: space-between; }
+.fsb-manager li.cur a:first-child { font-weight: 700; } .fsb-manager .dim { opacity: .6; }
+.fsb-manager .cell { display: flex; flex-direction: column; align-items: center; } .fsb-manager .cell div { display: flex; gap: 8px; }
+.fsb-manager .sb.add { background: #8884; }
+.fsb-manager .row a { cursor: pointer; } .fsb-manager .row [data-q] { flex: 1; }
+.fsb-manager li span { flex: 1; }
+.fsb-manager .hdr { position: sticky; top: 0; z-index: 2; background: var(--color-cool-5, #1b1b24); padding-bottom: 2px; }

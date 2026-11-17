@@ -1,0 +1,17 @@
+{
+  "FSB.Title": "Sound Board", "FSB.channels": "Channels", "FSB.playlists": "Playlists", "FSB.board": "Board",
+  "FSB.Drag": "Drag", "FSB.Idle": "Nothing playing", "FSB.EnableAudio": "Enable audio", "FSB.General": "General volume",
+  "FSB.Manager": "Sound manager", "FSB.Main": "Main channel (shown to players)", "FSB.Loop": "Loop", "FSB.Volume": "Volume",
+  "FSB.Rename": "Rename", "FSB.Delete": "Delete", "FSB.Empty": "Empty queue", "FSB.LinkHint": "YouTube video or playlist link",
+  "FSB.Add": "Add", "FSB.SaveQueue": "Save queue as playlist", "FSB.Clear": "Clear queue", "FSB.AddChannel": "Add channel",
+  "FSB.Name": "Name", "FSB.BadLink": "Could not add link", "FSB.Target": "Target channel", "FSB.Load": "Replace queue",
+  "FSB.Append": "Append", "FSB.NoPlaylists": "No saved playlists yet.", "FSB.AddBoard": "Add board", "FSB.StopAll": "Stop all effects",
+  "FSB.Button": "Board button", "FSB.Label": "Label", "FSB.Icon": "Font Awesome icon", "FSB.Image": "Custom image (overrides icon)",
+  "FSB.Color": "Color", "FSB.Sound": "Sound (file or YouTube link)", "FSB.Start": "Start (s)", "FSB.End": "End (s)",
+  "FSB.Hotkey": "Hotkey", "FSB.HotkeyHint": "Click and press a key (Backspace clears)", "FSB.Players": "Who can play", "FSB.AllPlayers": "All players",
+  "FSB.NeedSound": "Pick a sound file or paste a YouTube link.",
+  "FSB.Search": "Search tracks...",
+  "FSB.Shuffle": "Shuffle (reshuffles every round, loops)",
+  "FSB.Fold": "Collapse / expand",
+  "FSB.Remove": "Remove"
+}

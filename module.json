@@ -1,0 +1,73 @@
+{
+  "id": "foundry-sound-board",
+  "title": "Foundry Sound Board",
+  "description": "GM-controlled synced YouTube music channels, effects, saved playlists and a Streamdeck-style sound board with proportional volume.",
+  "version": "0.1.3",
+  "authors": [
+    {
+      "name": "Gabriel Dias Moraes",
+      "url": "https://github.com/GabrielDiasMoraes"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/sound-board.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "socket": true,
+  "url": "https://github.com/GabrielDiasMoraes/foundry-sound-board",
+  "manifest": "https://github.com/GabrielDiasMoraes/foundry-sound-board/releases/latest/download/module.json",
+  "download": "https://github.com/GabrielDiasMoraes/foundry-sound-board/releases/download/v0.1.3/module.zip",
+  "readme": "https://github.com/GabrielDiasMoraes/foundry-sound-board#readme",
+  "bugs": "https://github.com/GabrielDiasMoraes/foundry-sound-board/issues",
+  "license": "LICENSE",
+  "media": [
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/1-widget.png",
+      "caption": "Player widget: main channel title, time and volume"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/2-widget-board.png",
+      "caption": "Player widget with the board buttons the GM allowed"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/3-manager-channels-shuffle.png",
+      "caption": "GM manager: channels, queues, shuffle and loop"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/4-manager-search.png",
+      "caption": "Search tracks across all channels"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/5-manager-playlists.png",
+      "caption": "Saved playlists"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/GabrielDiasMoraes/foundry-sound-board/main/docs/screenshots/6-manager-board.png",
+      "caption": "Effects board"
+    }
+  ]
+}
